@@ -43,5 +43,5 @@ jspm_packages
 dist
 
 #TypeScript
-src/webapp/**/*.js
-src/webapp/**/*.map
+src/main/**/*.js
+src/main/**/*.map
