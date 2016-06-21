@@ -1,9 +1,6 @@
 {
   "name": "angular2-quickstart",
   "version": "1.0.0",
-  "scripts": {
-    "lite": "lite-server"
-  },
   "license": "ISC",
   "dependencies": {
     "@angular/common": "2.0.0-rc.2",
@@ -21,6 +18,7 @@
     "zone.js": "^0.6.12"
   },
   "devDependencies": {
-    "lite-server": "^2.2.0"
+    "gulp": "^3.9.1",
+    "gulp-connect": "^4.1.0"
   }
 }
