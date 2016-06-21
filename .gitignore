@@ -41,3 +41,7 @@ jspm_packages
 
 #Deployment
 dist
+
+#TypeScript
+app/**/*.js
+app/**/*.map
