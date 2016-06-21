@@ -40,7 +40,7 @@ jspm_packages
 .idea
 
 #Deployment
-dist
+.dist
 
 #TypeScript
 src/main/**/*.js
