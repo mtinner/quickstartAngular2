@@ -7,7 +7,7 @@ gulp.task('default', ['connectDist']);
 
 gulp.task('connectDist', function () {
   return connect.server({
-    root: '',
+    root: ['node_modules','src'],
     port: 9000
   });
 });
