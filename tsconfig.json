@@ -9,5 +9,9 @@
     "removeComments": false,
     "noImplicitAny": false,
     "rootDir":"src/main/webapp/app"
-  }
+  },
+  "exclude": [
+    "node_modules",
+    "@angular"
+  ]
 }

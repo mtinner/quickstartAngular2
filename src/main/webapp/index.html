@@ -6,11 +6,11 @@
     <link rel="stylesheet" href="app/styles/styles.css">
     <!-- 1. Load libraries -->
     <!-- Polyfill(s) for older browsers -->
-    <script src="core-js/client/shim.min.js"></script>
-    <script src="zone.js/dist/zone.js"></script>
-    <script src="systemjs/dist/system.src.js"></script>
+    <script src="app/scripts/vendor/shim.min.js"></script>
+    <script src="app/scripts/vendor/zone.js"></script>
+    <script src="app/scripts/vendor/system.src.js"></script>
     <!-- 2. Configure SystemJS -->
-    <script src="systemjs.config.js"></script>
+    <script src="app/scripts/systemjs.config.js"></script>
     <script>
         System.import('app').catch(function (err) {
             console.error(err);

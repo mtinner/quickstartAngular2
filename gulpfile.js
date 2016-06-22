@@ -2,14 +2,16 @@ var gulp = require('gulp'),
     connect = require('gulp-connect'),
     clean = require('gulp-clean'),
     ts = require('gulp-typescript'),
-    tsProject = ts.createProject("tsconfig.json"),
+    tsProject = ts.createProject("./tsconfig.json"),
     runSequence = require('run-sequence');
 
 
 gulp.task('default', function (callback) {
   runSequence(
-      ['cleanDist','transpile'],
-      ['copyApp', 'connectDist'],
+      'cleanDist',
+      'transpile',
+      ['copyApp', 'copyScripts', 'copyNodeModules'],
+      'connectDist',
       callback
   );
 });
@@ -27,7 +29,7 @@ gulp.task('transpile', function () {
 
 gulp.task('connectDist', function () {
   return connect.server({
-    root: ['node_modules', '.dist/webapp'],
+    root: ['.dist/webapp'],
     port: 9000
   });
 });
@@ -42,8 +44,18 @@ gulp.task('copyApp', function () {
 
 gulp.task('copyScripts', function () {
   return gulp.src([
-        './src/main/webapp/**'
-      ], {base: './src/main/webapp'})
-      .pipe(gulp.dest('.dist/webapp'));
+        'node_modules/core-js/client/shim.min.js',
+        'node_modules/systemjs/dist/system.src.js',
+        'node_modules/zone.js/dist/zone.js'
+      ])
+      .pipe(gulp.dest('.dist/webapp/app/scripts/vendor'));
+});
+
+gulp.task('copyNodeModules', function () {
+  return gulp.src([
+        'node_modules/@angular/*/bundles/*.js',
+        'node_modules/rxjs/**'
+      ], {base: './node_modules/*'})
+      .pipe(gulp.dest('.dist/webapp/app/scripts/vendor/*'));
 });
 
