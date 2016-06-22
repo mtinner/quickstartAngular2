@@ -3,7 +3,6 @@
     "target": "es5",
     "module": "commonjs",
     "moduleResolution": "node",
-    "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "removeComments": false,
@@ -11,7 +10,6 @@
     "rootDir":"src/main/webapp/app"
   },
   "exclude": [
-    "node_modules",
-    "@angular"
+    "node_modules"
   ]
 }

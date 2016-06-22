@@ -2,14 +2,15 @@ var gulp = require('gulp'),
     connect = require('gulp-connect'),
     clean = require('gulp-clean'),
     ts = require('gulp-typescript'),
-    tsProject = ts.createProject("./tsconfig.json"),
-    runSequence = require('run-sequence');
+    tsProject = ts.createProject("tsconfig.json"),
+    runSequence = require('run-sequence'),
+    sourcemaps = require('gulp-sourcemaps');
 
 
 gulp.task('default', function (callback) {
   runSequence(
       'cleanDist',
-      'transpile',
+      'transpiling',
       ['copyApp', 'copyScripts', 'copyNodeModules'],
       'connectDist',
       callback
@@ -21,10 +22,14 @@ gulp.task('cleanDist', function () {
       .pipe(clean());
 });
 
-gulp.task('transpile', function () {
-  return tsProject.src()
-      .pipe(ts(tsProject))
-      .js.pipe(gulp.dest('.dist/webapp/app'));
+gulp.task('transpiling', function () {
+  var tsResult= tsProject.src()
+      .pipe(sourcemaps.init())
+      .pipe(ts(tsProject));
+
+  return tsResult.js
+      .pipe(sourcemaps.write())
+      .pipe(gulp.dest('.dist/webapp/app'));
 });
 
 gulp.task('connectDist', function () {
