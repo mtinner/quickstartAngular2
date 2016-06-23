@@ -1,10 +1,10 @@
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
 
 import {Component} from '@angular/core'
-import {HeroesComponent} from "./heroes.components";
-import {HeroService} from "./hero.service";
-import {DashboardComponent} from "./dashboard.component";
-import {HeroDetailComponent} from "./components/heroDetail/hero-detail.component";
+import {HeroesComponent} from "./components/hero/heroes/heroes.component";
+import {HeroService} from "./components/hero/hero.service";
+import {DashboardComponent} from "./components/hero/dashboard/dashboard.component";
+import {HeroDetailComponent} from "./components/hero/heroDetail/hero-detail.component";
 
 
 @Component({
