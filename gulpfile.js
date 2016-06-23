@@ -34,7 +34,7 @@ gulp.task('transpiling', function () {
 
 gulp.task('connectDist', function () {
   return connect.server({
-    root: ['.dist/webapp'],
+    root: ['.dist/webapp','node_modules'],
     port: 9000
   });
 });
@@ -59,7 +59,8 @@ gulp.task('copyScripts', function () {
 gulp.task('copyNodeModules', function () {
   return gulp.src([
         'node_modules/@angular/*/bundles/*.js',
-        'node_modules/rxjs/**'
+        'node_modules/rxjs/**',
+        'node_modules/angular2-in-memory-web-api/**'
       ], {base: './node_modules/*'})
       .pipe(gulp.dest('.dist/webapp/app/scripts/vendor/*'));
 });

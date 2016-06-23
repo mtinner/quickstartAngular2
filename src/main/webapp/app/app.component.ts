@@ -13,6 +13,7 @@ import {HeroDetailComponent} from "./components/hero/heroDetail/hero-detail.comp
     styleUrls: ['app/app.component.css'],
     directives: [ROUTER_DIRECTIVES],
     providers: [
+        /* HTTP_PROVIDERS goes normally here and not in main.ts*/
         ROUTER_PROVIDERS,
         HeroService
     ]
