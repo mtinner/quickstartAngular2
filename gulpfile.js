@@ -4,13 +4,14 @@ var gulp = require('gulp'),
     ts = require('gulp-typescript'),
     tsProject = ts.createProject("tsconfig.json"),
     runSequence = require('run-sequence'),
-    sourcemaps = require('gulp-sourcemaps');
+    sourcemaps = require('gulp-sourcemaps'),
+    sass = require('gulp-sass');
 
 
 gulp.task('default', function (callback) {
   runSequence(
       'cleanDist',
-      'transpiling',
+      ['transpiling','sass'],
       ['copyApp', 'copyScripts', 'copyNodeModules'],
       'connectDist',
       callback
@@ -32,6 +33,12 @@ gulp.task('transpiling', function () {
       .pipe(gulp.dest('.dist/webapp/app'));
 });
 
+gulp.task('sass', function () {
+  return gulp.src('./src/main/webapp/**/*.scss')
+      .pipe(sass().on('error', sass.logError))
+      .pipe(gulp.dest('.dist/webapp'));
+});
+
 gulp.task('connectDist', function () {
   return connect.server({
     root: ['.dist/webapp','node_modules'],
@@ -42,7 +49,8 @@ gulp.task('connectDist', function () {
 gulp.task('copyApp', function () {
   return gulp.src([
         './src/main/webapp/**',
-        '!./src/main/webapp/**/*.ts'
+        '!./src/main/webapp/**/*.ts',
+        '!./src/main/webapp/**/*.scss'
       ], {base: './src/main/webapp'})
       .pipe(gulp.dest('.dist/webapp'));
 });
