@@ -44,4 +44,5 @@ jspm_packages
 
 #TypeScript
 src/main/**/*.js
+!src/main/**/systen.config.js
 src/main/**/*.map
